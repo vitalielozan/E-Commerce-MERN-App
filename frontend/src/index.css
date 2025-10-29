@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@plugin './hero.js';
+
+@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+
+@custom-variant dark (&:is(.dark *));
+
+
+
+@layer components {
+    .input-box {
+        @apply mb-4 mt-3 flex w-full justify-between gap-3 rounded border border-gray-200/50 bg-gray-100 px-4 py-3 text-sm text-gray-900 outline-none dark:bg-gray-800 dark:text-gray-200;
+    }
+
+    .btn {
+        @apply my-1 w-full rounded-md bg-sky-600 p-[10px] text-sm font-medium text-gray-700 shadow-lg shadow-purple-600/5 hover:bg-sky-600/15 hover:text-blue-600 dark:bg-blue-900 dark:text-white;
+    }
+}
