@@ -29,7 +29,9 @@ function HomePage() {
     <div className="space-y-12">
       <HeroSection />
       <section className="px-6">
-        <h2 className="mb-4 text-2xl font-semibold">Featured Brands</h2>
+        <h2 className="mb-4 text-2xl font-semibold text-gray-300 dark:text-white">
+          Featured Brands
+        </h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {previewBrands.map((brand) => (
             <ProdutCrd key={brand._id} product={brand} />
@@ -38,7 +40,7 @@ function HomePage() {
         <div className="mt-4 text-right">
           <Link
             to="/brands"
-            className="mx-5 mb-8 text-2xl font-semibold text-gray-900 hover:underline dark:text-white"
+            className="mx-5 mb-8 text-2xl font-semibold text-gray-300 hover:underline dark:text-white"
           >
             View all Brands
           </Link>

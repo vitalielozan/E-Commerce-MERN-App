@@ -56,7 +56,7 @@ function ProductPage() {
   const isInFavorites = favorites.some((item) => item.product._id === id);
 
   return (
-    <Card className="mx-auto max-w-2xl rounded-2xl bg-white/80 px-6 py-10 shadow-2xl dark:bg-gray-900/80 sm:px-8 lg:px-10">
+    <Card className="mx-auto max-w-2xl rounded-2xl bg-gray-100/80 px-6 py-10 shadow-2xl sm:px-8 lg:px-10 dark:bg-gray-900/50">
       <CardHeader className="flex flex-col items-center justify-center gap-4">
         <ImageCarousel srcArray={imagesArr} />
         <h1 className="text-center text-3xl font-extrabold text-gray-900 dark:text-white">

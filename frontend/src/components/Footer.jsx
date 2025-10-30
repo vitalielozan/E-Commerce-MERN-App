@@ -13,7 +13,7 @@ function Footer() {
   };
 
   return (
-    <footer className="bg-gray-100 px-4 py-3 dark:bg-gray-900">
+    <footer className="bg-gray-100/80 px-4 py-3 dark:bg-gray-900/50">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 py-2 pb-3 text-center text-sm md:grid-cols-4 md:text-left">
         <div>
           <h1 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
@@ -24,7 +24,7 @@ function Footer() {
           </p>
         </div>
 
-        <div className="flex justify-center space-x-3 text-base md:justify-start">
+        <div className="flex items-center justify-center space-x-3 text-base md:justify-start">
           <Link
             to="/"
             onClick={scrollToTop}
@@ -92,7 +92,7 @@ function Footer() {
         </div>
 
         <div className="space-y-3">
-          <LanguageSwitcher className="mx-auto w-full max-w-[160px] text-gray-900 dark:text-white md:mx-0" />
+          <LanguageSwitcher className="mx-auto w-full max-w-40 text-gray-900 md:mx-0 dark:text-white" />
         </div>
       </div>
       <hr className="mx-10 my-4 border-t border-gray-700 dark:border-gray-500" />

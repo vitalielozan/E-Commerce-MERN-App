@@ -1,14 +1,14 @@
-import React from 'react'
-import { motion as Motion, easeOut } from 'framer-motion'
-import { IoHome, IoCart, IoHeart, IoLogIn } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
-import SearchBar from './SearchBar.jsx'
-import LogOut from './LogOut.jsx'
-import ThemeToggle from './ThemeToggle.jsx'
-import { useAuthContext } from '../hooks/useAuthContext.js'
+import React from 'react';
+import { motion as Motion, easeOut } from 'framer-motion';
+import { IoHome, IoCart, IoHeart, IoLogIn } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
+import SearchBar from './SearchBar.jsx';
+import LogOut from './LogOut.jsx';
+import ThemeToggle from './ThemeToggle.jsx';
+import { useAuthContext } from '../hooks/useAuthContext.js';
 
 function AnimatedMobileMenu() {
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
 
   return (
     <Motion.div
@@ -20,37 +20,37 @@ function AnimatedMobileMenu() {
     >
       <Link
         to="/"
-        className="block text-gray-900 hover:underline dark:text-gray-300"
+        className="block text-2xl text-gray-900 hover:underline dark:text-gray-300"
       >
-        <IoHome className="size-7" title="Home" />
+        Home
       </Link>
       <Link
         to="/favorites"
-        className="block text-gray-900 hover:underline dark:text-gray-300"
+        className="block text-2xl text-gray-900 hover:underline dark:text-gray-300"
       >
-        <IoHeart className="size-7" title="Favorites" />
+        Favorites
       </Link>
       <Link
         to="/cart"
-        className="block text-gray-900 hover:underline dark:text-gray-300"
+        className="block text-2xl text-gray-900 hover:underline dark:text-gray-300"
       >
-        <IoCart className="size-7" title="Cart" />
+        Cart
       </Link>
       {user ? (
         <LogOut />
       ) : (
         <Link
           to="/login"
-          className="block text-gray-900 hover:underline dark:text-gray-300"
+          className="block text-2xl text-gray-900 hover:underline dark:text-gray-300"
         >
-          <IoLogIn className="size-7" title="LogIn" />
+          LogIn
         </Link>
       )}
       <ThemeToggle />
 
       <SearchBar />
     </Motion.div>
-  )
+  );
 }
 
-export default AnimatedMobileMenu
+export default AnimatedMobileMenu;

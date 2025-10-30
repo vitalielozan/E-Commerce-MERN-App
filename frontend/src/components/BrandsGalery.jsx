@@ -1,33 +1,33 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Button } from '@heroui/react'
-import ProductCard from './ProductCard.jsx'
-import MotionDiv from './MotionDiv.jsx'
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '@heroui/react';
+import ProductCard from './ProductCard.jsx';
+import MotionDiv from './MotionDiv.jsx';
 
 function BrandsGalery({ brandsData }) {
-  const [currentPage, setCurrentPage] = useState(1)
-  const rawArray = Array.isArray(brandsData) ? brandsData : []
+  const [currentPage, setCurrentPage] = useState(1);
+  const rawArray = Array.isArray(brandsData) ? brandsData : [];
   const grouped = rawArray.reduce((acc, product) => {
-    const brand = product.brand || 'Unknown'
-    if (!acc[brand]) acc[brand] = []
-    acc[brand].push(product)
-    return acc
-  }, {})
+    const brand = product.brand || 'Unknown';
+    if (!acc[brand]) acc[brand] = [];
+    acc[brand].push(product);
+    return acc;
+  }, {});
 
-  const brandsPerPage = 2
-  const productsPerBrand = 3
+  const brandsPerPage = 2;
+  const productsPerBrand = 3;
 
-  const brandsArray = Object.entries(grouped)
-  const totalPages = Math.ceil(brandsArray.length / brandsPerPage)
-  const startIndex = (currentPage - 1) * brandsPerPage
+  const brandsArray = Object.entries(grouped);
+  const totalPages = Math.ceil(brandsArray.length / brandsPerPage);
+  const startIndex = (currentPage - 1) * brandsPerPage;
   const currentBrands = brandsArray.slice(
     startIndex,
     startIndex + brandsPerPage
-  )
+  );
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [currentPage])
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
 
   return (
     <>
@@ -61,7 +61,7 @@ function BrandsGalery({ brandsData }) {
         {currentBrands.map(([brandName, products]) => (
           <div key={brandName}>
             <div className="mx-5 mb-4 flex items-center justify-between">
-              <h3 className="text-xl font-bold text-gray-700 dark:text-gray-500">
+              <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300">
                 {brandName}
               </h3>
               <Link
@@ -108,7 +108,7 @@ function BrandsGalery({ brandsData }) {
         </div>
       )}
     </>
-  )
+  );
 }
 
-export default BrandsGalery
+export default BrandsGalery;
