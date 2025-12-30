@@ -3,6 +3,16 @@ export function validateEmail(email) {
   return regex.test(email);
 }
 
+export const validatePassword = (password) => {
+  const minLength = 8;
+  const hasUpperCase = /[A-Z]/.test(password);
+  const hasNumber = /\d/.test(password);
+  const hasSpecialChar = /[!@#$%^&*/.,-=?]/.test(password);
+  return (
+    password.length >= minLength && hasUpperCase && hasNumber && hasSpecialChar
+  );
+};
+
 export const maskEmail = (email) => {
   if (!email || typeof email !== 'string' || !email.includes('@'))
     return 'Anonymus';
