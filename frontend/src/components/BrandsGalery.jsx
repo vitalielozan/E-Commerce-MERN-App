@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { Button } from '@heroui/react';
 import ProductCard from './ProductCard.jsx';
 import MotionDiv from './MotionDiv.jsx';
+import { useTranslation } from 'react-i18next';
 
 function BrandsGalery({ brandsData }) {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const rawArray = Array.isArray(brandsData) ? brandsData : [];
   const grouped = rawArray.reduce((acc, product) => {
@@ -32,7 +34,7 @@ function BrandsGalery({ brandsData }) {
   return (
     <>
       <h1 className="mx-5 mb-8 text-3xl font-bold text-gray-900 dark:text-white">
-        All Brands
+        {t('brands.allBrands')}
       </h1>
 
       {totalPages > 1 && (
@@ -43,7 +45,7 @@ function BrandsGalery({ brandsData }) {
             size="sm"
             className="disabled:opacity-50"
           >
-            Prev
+            {t('brands.prev')}
           </Button>
           <Button
             onPress={() =>
@@ -53,7 +55,7 @@ function BrandsGalery({ brandsData }) {
             size="sm"
             className="disabled:opacity-50"
           >
-            Next
+            {t('brands.next')}
           </Button>
         </div>
       )}
@@ -68,7 +70,7 @@ function BrandsGalery({ brandsData }) {
                 to={`/brand/${brandName}`}
                 className="text-sm text-indigo-700 hover:underline"
               >
-                View All
+                {t('brands.viewAll')}
               </Link>
             </div>
             <MotionDiv>
@@ -93,7 +95,7 @@ function BrandsGalery({ brandsData }) {
             size="sm"
             className="disabled:opacity-50"
           >
-            Prev
+            {t('brands.prev')}
           </Button>
           <Button
             onPress={() =>
@@ -103,7 +105,7 @@ function BrandsGalery({ brandsData }) {
             size="sm"
             className="disabled:opacity-50"
           >
-            Next
+            {t('brands.next')}
           </Button>
         </div>
       )}

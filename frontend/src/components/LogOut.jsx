@@ -1,19 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { IoLogOut } from 'react-icons/io5';
 import { useAuthContext } from '../hooks/useAuthContext.js';
+import { useTranslation } from 'react-i18next';
 
 function LogOut() {
   const { clearUser } = useAuthContext();
+  const { t } = useTranslation();
 
   return (
     <Link
       to="/"
       onClick={() => clearUser()}
-      className="text-gray-900 hover:underline dark:text-gray-300"
+      className="text-sm font-medium text-slate-700 transition-colors hover:text-sky-600 dark:text-slate-300"
     >
-      LogOut
-      {/* <IoLogOut className="size-8" title="LogOut" /> */}
+      {t('nav.logout')}
     </Link>
   );
 }

@@ -11,12 +11,12 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
-  Image
+  CardFooter
 } from '@heroui/react';
-import { API_PATHS } from '../services/apiPaths.js';
+import { useTranslation } from 'react-i18next';
 
 function ProductPage() {
+  const { t } = useTranslation();
   const { id } = useParams();
   const {
     carts,
@@ -34,7 +34,7 @@ function ProductPage() {
         <Spinner
           size="lg"
           color="primary"
-          label="Loading..."
+          label={t('common.loading')}
           labelColor="primary"
         />
       </div>
@@ -43,12 +43,14 @@ function ProductPage() {
   if (error)
     return (
       <div className="py-10 text-center text-red-500">
-        Error loading product.
+        {t('common.errorLoadingProduct')}
       </div>
     );
 
   if (!product || Array.isArray(product))
-    return <p className="py-10 text-center text-red-500">Product not found.</p>;
+    return (
+      <p className="py-10 text-center text-red-500">{t('product.notFound')}</p>
+    );
 
   const { title, description, price, images } = product;
   const imagesArr = Array.isArray(images) ? images : [images];
@@ -56,55 +58,69 @@ function ProductPage() {
   const isInFavorites = favorites.some((item) => item.product._id === id);
 
   return (
-    <Card className="mx-auto max-w-2xl rounded-2xl bg-gray-100/80 px-6 py-10 shadow-2xl sm:px-8 lg:px-10 dark:bg-gray-900/50">
-      <CardHeader className="flex flex-col items-center justify-center gap-4">
-        <ImageCarousel srcArray={imagesArr} />
-        <h1 className="text-center text-3xl font-extrabold text-gray-900 dark:text-white">
-          {title}
-        </h1>
-        <p className="text-justify text-lg text-gray-500 dark:text-gray-300">
-          {description}
-        </p>
-      </CardHeader>
-      <CardBody className="flex flex-col items-center gap-6">
-        <ReviewProduct productId={id} />
-        <span className="text-2xl font-bold text-indigo-600">${price}</span>
-      </CardBody>
-      <CardFooter className="justify-around">
-        {isInCart ? (
-          <Button
-            onPress={() => removeFromCartByProductId(product._id)}
-            className="rounded-full bg-red-600 px-4 py-2 text-white shadow hover:scale-105"
-          >
-            <Trash2 className="h-5 w-5" />
-          </Button>
-        ) : (
-          <Button
-            title="Add to cart"
-            onPress={() => addToCart(product)}
-            className="rounded-full bg-gray-900 px-4 py-2 text-white shadow hover:scale-105"
-          >
-            <ShoppingCart className="h-5 w-5" />
-          </Button>
-        )}
+    <Card className="mx-auto w-full max-w-5xl rounded-3xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+      <CardHeader className="grid w-full grid-cols-1 items-start gap-6 p-0 lg:grid-cols-2">
+        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950/60">
+          <ImageCarousel srcArray={imagesArr} />
+        </div>
 
-        <Button
-          title="Add to favorites"
-          onPress={
-            isInFavorites
-              ? () => removeFromFavoritesByProductId(product._id)
-              : () => addToFavorites(product)
-          }
-          className={`rounded-full px-4 py-2 text-white shadow hover:scale-105 ${
-            isInFavorites ? 'bg-pink-600' : 'bg-gray-900'
-          }`}
-        >
-          <Heart
-            className="h-5 w-5"
-            fill={isInFavorites ? 'currentColor' : 'none'}
-          />
-        </Button>
-      </CardFooter>
+        <div className="space-y-4 pt-1">
+          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl dark:text-white">
+            {title}
+          </h1>
+
+          <span className="inline-flex rounded-full bg-sky-100 px-4 py-1.5 text-xl font-bold text-sky-700 dark:bg-sky-900/40 dark:text-sky-300">
+            ${price}
+          </span>
+
+          <p className="text-base leading-relaxed text-slate-600 dark:text-slate-300">
+            {description}
+          </p>
+
+          <div className="flex items-center gap-3 pt-2">
+            {isInCart ? (
+              <Button
+                onPress={() => removeFromCartByProductId(product._id)}
+                className="rounded-xl bg-red-600 px-4 py-2 text-white shadow-sm transition-colors hover:bg-red-700"
+              >
+                <Trash2 className="h-5 w-5" />
+              </Button>
+            ) : (
+              <Button
+                title={t('product.addToCart')}
+                onPress={() => addToCart(product)}
+                className="rounded-xl bg-slate-900 px-4 py-2 text-white shadow-sm transition-colors hover:bg-sky-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-sky-300"
+              >
+                <ShoppingCart className="h-5 w-5" />
+              </Button>
+            )}
+
+            <Button
+              title={t('product.addToFavorites')}
+              onPress={
+                isInFavorites
+                  ? () => removeFromFavoritesByProductId(product._id)
+                  : () => addToFavorites(product)
+              }
+              className={`rounded-xl px-4 py-2 text-white shadow-sm transition-colors ${
+                isInFavorites
+                  ? 'bg-pink-600 hover:bg-pink-700'
+                  : 'bg-slate-900 hover:bg-sky-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-sky-300'
+              }`}
+            >
+              <Heart
+                className="h-5 w-5"
+                fill={isInFavorites ? 'currentColor' : 'none'}
+              />
+            </Button>
+          </div>
+        </div>
+      </CardHeader>
+
+      <CardBody className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950/50">
+        <ReviewProduct productId={id} />
+      </CardBody>
+      <CardFooter className="p-0" />
     </Card>
   );
 }

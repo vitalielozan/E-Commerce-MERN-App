@@ -1,4 +1,153 @@
 {
-  "welcome": "Bun venit",
-  "logout": "Deconectează-te"
+  "common": {
+    "loading": "Se încarcă...",
+    "errorLoadingProduct": "Eroare la încărcarea produsului.",
+    "continueShopping": "Continuă cumpărăturile",
+    "anonymous": "Anonim",
+    "currency": "$",
+    "theme": {
+      "light": "Deschis",
+      "dark": "Întunecat"
+    }
+  },
+  "nav": {
+    "home": "Acasă",
+    "favorites": "Favorite",
+    "cart": "Coș",
+    "login": "Autentificare",
+    "logout": "Deconectare",
+    "searchPlaceholder": "Caută...",
+    "searchGo": "Caută",
+    "language": "Limbă"
+  },
+  "hero": {
+    "title": "Descoperă branduri de top și oferte exclusive",
+    "subtitle": "Cumpără inteligent din colecții atent selectate de la branduri premium, într-un singur loc."
+  },
+  "home": {
+    "featuredBrands": "Branduri recomandate",
+    "viewAllBrands": "Vezi toate brandurile",
+    "productsLoading": "Se încarcă produsele..."
+  },
+  "brands": {
+    "allBrands": "Toate brandurile",
+    "viewAll": "Vezi toate",
+    "prev": "Anterior",
+    "next": "Următor",
+    "noProductsForBrand": "Nu au fost găsite produse pentru {{brandName}}.",
+    "descriptions": {
+      "SAMSUNG": "Samsung, electronice inovatoare moderne pentru o viață inteligentă",
+      "JVC": "Soluții fiabile audio și video cu JVC",
+      "PANASONIC": "Panasonic aduce tehnologie avansată pentru utilizarea de zi cu zi",
+      "LG": "Electrocasnice inteligente pentru case moderne cu LG",
+      "SHARP": "Ecrane și electronice de înaltă performanță cu Sharp",
+      "HISENSE": "Calitate accesibilă cu funcții moderne",
+      "default": "Produse ale brandului {{brandName}}"
+    }
+  },
+  "product": {
+    "viewDetails": "Vezi detalii",
+    "notFound": "Produsul nu a fost găsit.",
+    "addToCart": "Adaugă în coș",
+    "addToFavorites": "Adaugă la favorite"
+  },
+  "reviews": {
+    "title": "Recenzii",
+    "writeComment": "Scrie un comentariu...",
+    "stars": "{{count}} stele",
+    "send": "Trimite recenzia",
+    "mustLogin": "Trebuie să fii autentificat pentru a scrie o recenzie.",
+    "loading": "Se încarcă recenziile...",
+    "empty": "Nu există recenzii pentru acest produs."
+  },
+  "auth": {
+    "welcomeBack": "Bine ai revenit",
+    "loginSubtitle": "Introdu datele tale pentru autentificare.",
+    "emailAddress": "Adresă de email",
+    "password": "Parolă",
+    "minChars": "Minim 8 caractere",
+    "login": "AUTENTIFICARE",
+    "noAccount": "Nu ai cont?",
+    "signUp": "Înregistrează-te",
+    "createAccount": "Creează un cont",
+    "signupSubtitle": "Alătură-te azi completând datele de mai jos",
+    "fullName": "Nume complet",
+    "yourName": "Numele tău",
+    "confirmPassword": "Confirmă parola",
+    "signUpButton": "ÎNREGISTRARE",
+    "alreadyHaveAccount": "Ai deja cont?",
+    "loginLink": "Autentificare",
+    "errors": {
+      "invalidEmail": "Te rugăm să introduci o adresă de email validă.",
+      "enterPassword": "Te rugăm să introduci parola.",
+      "enterName": "Te rugăm să introduci numele.",
+      "invalidPassword": "Parola trebuie să aibă cel puțin 8 caractere, literă mare, număr și caracter special.",
+      "passwordMismatch": "Parolele nu coincid.",
+      "generic": "Ceva nu a mers bine. Încearcă din nou"
+    },
+    "sideTitle": "Cumpără TV online! Achiziția unui TV nou poate fi o experiență simplă cu noi."
+  },
+  "cart": {
+    "title": "Coș de cumpărături",
+    "total": "Total:",
+    "checkout": "Continuă spre checkout",
+    "empty": "Nu există produse în coșul tău. Adaugă produse din ofertele noastre."
+  },
+  "favorites": {
+    "title": "Produsele tale favorite",
+    "empty": "Nu ai produse favorite. Alege favoritele tale din ofertele noastre.",
+    "alreadyInCart": "Produsul este deja în coș!"
+  },
+  "notifications": {
+    "loginForCart": "Autentifică-te pentru a adăuga acest produs în coș.",
+    "invalidProduct": "Produs invalid.",
+    "productInCart": "Produsul este deja în coș!",
+    "addedToCart": "Adăugat în coș!",
+    "failedAddToCart": "Nu s-a putut adăuga în coș.",
+    "removedFromCart": "Eliminat din coș!",
+    "failedRemoveFromCart": "Nu s-a putut elimina din coș.",
+    "productInFavorites": "Produsul este deja la favorite!",
+    "addedToFavorites": "Adăugat la favorite!",
+    "failedAddToFavorite": "Nu s-a putut adăuga la favorite.",
+    "addedToCartFromFavorite": "Adăugat în coș din favorite!",
+    "failedAddFromFavorite": "Nu s-a putut adăuga din favorite.",
+    "removedFromFavorite": "Eliminat din favorite!",
+    "failedRemoveFromFavorite": "Nu s-a putut elimina din favorite.",
+    "cartCleared": "Coșul a fost golit.",
+    "failedClearCart": "Nu s-a putut goli coșul."
+  },
+  "checkout": {
+    "title": "Finalizare comandă",
+    "success": "Plata a fost efectuată cu succes! Redirecționare spre pagina principală...",
+    "orderSummary": "Sumar comandă",
+    "billingAddress": "Adresă de facturare",
+    "shippingAddress": "Adresă de livrare",
+    "cardNumber": "Număr card",
+    "payNow": "Plătește acum",
+    "processing": "Se procesează...",
+    "validation": {
+      "billingRequired": "Adresa de facturare este obligatorie",
+      "shippingRequired": "Adresa de livrare este obligatorie",
+      "invalidCard": "Număr de card invalid",
+      "cardRequired": "Numărul cardului este obligatoriu"
+    }
+  },
+  "search": {
+    "resultFor": "Rezultate pentru:",
+    "sortByPrice": "Sortează după preț:",
+    "default": "Implicit",
+    "asc": "Preț crescător",
+    "desc": "Preț descrescător",
+    "noResults": "Nu au fost găsite produse."
+  },
+  "notFound": {
+    "oops": "Oops!",
+    "message": "Pagina pe care o cauți nu există...",
+    "goBack": "Înapoi"
+  },
+  "footer": {
+    "tagline": "Sursa ta pentru televizoare premium.",
+    "followUs": "Urmărește-ne",
+    "rights": "Toate drepturile rezervate de Vitalie Lozan."
+  }
 }

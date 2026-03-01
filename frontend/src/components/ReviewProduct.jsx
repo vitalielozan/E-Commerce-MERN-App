@@ -6,8 +6,10 @@ import { Textarea } from '@heroui/input';
 import { maskEmail } from '../services/helper.js';
 import axiosInstance from '../services/axiosInstance.js';
 import { API_PATHS } from '../services/apiPaths.js';
+import { useTranslation } from 'react-i18next';
 
 function ReviewProduct({ productId }) {
+  const { t } = useTranslation();
   const { user } = useAuthContext();
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(5);
@@ -67,20 +69,23 @@ function ReviewProduct({ productId }) {
   };
 
   return (
-    <div className="mt-10">
-      <h2 className="mb-4 text-xl font-semibold text-gray-800 dark:text-gray-100">
-        Reviews
+    <div className="w-full">
+      <h2 className="mb-4 text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
+        {t('reviews.title')}
       </h2>
 
       {user ? (
-        <Form onSubmit={handleSubmit} className="mb-6 space-y-4">
+        <Form
+          onSubmit={handleSubmit}
+          className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900"
+        >
           <Textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            placeholder="Write a comment..."
+            placeholder={t('reviews.writeComment')}
             required
             variant="faded"
-            className="w-full max-w-md"
+            className="w-full"
           />
 
           <div className="flex items-center space-x-2">
@@ -95,22 +100,22 @@ function ReviewProduct({ productId }) {
                 onClick={() => setRating(star)}
               />
             ))}
-            <span className="text-sm text-gray-600 dark:text-gray-400">
-              {rating} stars
+            <span className="text-sm text-slate-600 dark:text-slate-400">
+              {t('reviews.stars', { count: rating })}
             </span>
           </div>
 
           {!myReview ? (
             <Button
               type="submit"
-              className="rounded-lg bg-gray-950 from-cyan-600 to-indigo-600 px-8 py-3 text-white shadow-lg transition-transform hover:scale-105 dark:bg-gradient-to-r"
+              className="rounded-xl bg-slate-900 px-8 py-3 text-white shadow-sm transition-colors hover:bg-sky-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-sky-300"
               fullWidth
             >
-              Send Review
+              {t('reviews.send')}
             </Button>
           ) : (
             <Button
-              className="my-3 rounded-lg bg-red-500 px-8 py-3 text-white shadow-lg transition-transform hover:scale-105"
+              className="my-2 rounded-xl bg-red-600 px-8 py-3 text-white shadow-sm transition-colors hover:bg-red-700"
               fullWidth
               onPress={() => handleRemovereview(myReview._id)}
             >
@@ -119,31 +124,31 @@ function ReviewProduct({ productId }) {
           )}
         </Form>
       ) : (
-        <p className="mb-4 text-lg italic text-gray-500 dark:text-gray-400">
-          I must be loged for reviews.
+        <p className="mb-4 text-base text-slate-500 italic dark:text-slate-400">
+          {t('reviews.mustLogin')}
         </p>
       )}
 
       <div className="space-y-4">
         {loading ? (
-          <p className="italic text-gray-500">Loading reviews...</p>
+          <p className="text-slate-500 italic">{t('reviews.loading')}</p>
         ) : reviews.length === 0 ? (
-          <p className="text-lg italic text-gray-400 dark:text-gray-500">
-            There are no reviews for this product.
+          <p className="text-base text-slate-400 italic dark:text-slate-500">
+            {t('reviews.empty')}
           </p>
         ) : (
           reviews.map((review, indx) => (
             <div
               key={indx}
-              className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm dark:border-gray-300 dark:bg-gray-800/50"
+              className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900"
             >
               <div className="mb-1 flex items-center justify-between">
-                <span className="me-2 font-semibold text-gray-800 dark:text-gray-100">
-                  {typeof user?.email === 'string'
-                    ? maskEmail(user?.email)
-                    : 'Anonymus'}
+                <span className="me-2 font-semibold text-slate-800 dark:text-slate-100">
+                  {typeof review?.user?.email === 'string'
+                    ? maskEmail(review.user.email)
+                    : t('common.anonymous')}
                 </span>
-                <span className="text-sm text-gray-400 dark:text-gray-500">
+                <span className="text-sm text-slate-400 dark:text-slate-500">
                   {new Date(review.createdAt).toLocaleDateString()}
                 </span>
               </div>
@@ -159,7 +164,7 @@ function ReviewProduct({ productId }) {
                   />
                 ))}
               </div>
-              <p className="text-gray-700 dark:text-gray-300">
+              <p className="text-slate-700 dark:text-slate-300">
                 {review.comment}
               </p>
             </div>

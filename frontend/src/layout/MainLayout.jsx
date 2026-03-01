@@ -5,10 +5,12 @@ import Footer from '../components/Footer.jsx';
 
 function MainLayout() {
   return (
-    <div className="flex min-h-screen flex-col gap-6 bg-gray-100/50 dark:bg-gray-900">
+    <div className="flex min-h-screen flex-col bg-slate-50 dark:bg-slate-950">
       <Header />
-      <main className="flex-1 p-4">
-        <Outlet />
+      <main className="mx-auto flex w-full max-w-7xl flex-1 px-4 py-6 md:px-6 md:py-8">
+        <div className="w-full">
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </div>

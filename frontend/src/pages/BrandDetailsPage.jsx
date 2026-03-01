@@ -1,26 +1,24 @@
-import { useParams } from 'react-router-dom'
-import { useFetchProducts } from '../hooks/useFetchProducts.js'
-import ProductCard from '../components/ProductCard.jsx'
-import MotionDiv from '../components/MotionDiv.jsx'
-import { Spinner } from '@heroui/react'
+import { useParams } from 'react-router-dom';
+import { useFetchProducts } from '../hooks/useFetchProducts.js';
+import ProductCard from '../components/ProductCard.jsx';
+import MotionDiv from '../components/MotionDiv.jsx';
+import { Spinner } from '@heroui/react';
+import { useTranslation } from 'react-i18next';
 
 function BrandDetailsPage() {
-  const { brandName } = useParams()
+  const { t } = useTranslation();
+  const { brandName } = useParams();
   const {
     data: products,
     loading,
     error
-  } = useFetchProducts('brand', brandName)
+  } = useFetchProducts('brand', brandName);
 
-  const brandDesc = {
-    SAMSUNG: 'Samsung, modern innovative electronics for smart living',
-    JVC: 'Reliable sound and video solutions with JVC',
-    PANASONIC: 'Panasonic bringt advanced tech for everyday use',
-    LG: 'Smart appliances for modern homes with LG',
-    SHARP: 'High-performance screens and electronics with Sharp',
-    HISENSE: 'Affordable quality with modern features'
-  }
-  const discription = brandDesc[brandName] || `${brandName} brand products`
+  const description =
+    t(`brands.descriptions.${brandName}`, {
+      defaultValue: t('brands.descriptions.default', { brandName }),
+      brandName
+    }) || t('brands.descriptions.default', { brandName });
 
   if (loading)
     return (
@@ -28,28 +26,28 @@ function BrandDetailsPage() {
         <Spinner
           size="lg"
           color="primary"
-          label="Loading..."
+          label={t('common.loading')}
           labelColor="primary"
         />
       </div>
-    )
+    );
 
   if (error)
     return (
       <div className="py-10 text-center text-red-500">
-        Error loading product.
+        {t('common.errorLoadingProduct')}
       </div>
-    )
+    );
 
   return (
     <>
       <h1 className="mb-8 text-center text-2xl font-bold text-gray-900 dark:text-white">
-        {discription}
+        {description}
       </h1>
 
       {products.length === 0 ? (
         <p className="text-center text-gray-600 dark:text-gray-400">
-          No products found for {brandName}.
+          {t('brands.noProductsForBrand', { brandName })}
         </p>
       ) : (
         <MotionDiv>
@@ -61,6 +59,6 @@ function BrandDetailsPage() {
         </MotionDiv>
       )}
     </>
-  )
+  );
 }
-export default BrandDetailsPage
+export default BrandDetailsPage;

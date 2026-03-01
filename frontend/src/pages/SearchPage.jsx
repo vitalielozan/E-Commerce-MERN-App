@@ -4,8 +4,10 @@ import { useFetchProducts } from '../hooks/useFetchProducts.js';
 import ProductCard from '../components/ProductCard.jsx';
 import MotionDiv from '../components/MotionDiv.jsx';
 import { Spinner } from '@heroui/react';
+import { useTranslation } from 'react-i18next';
 
 function SearchPage() {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q')?.toLowerCase() || '';
   const { data: allProducts, loading, error } = useFetchProducts('all');
@@ -40,32 +42,38 @@ function SearchPage() {
         <Spinner
           size="lg"
           color="primary"
-          label="Loading..."
+          label={t('common.loading')}
           labelColor="primary"
         />
       </div>
     );
   }
 
-  if (error) return <p className="p-4 text-red-500">Error: {error.message}</p>;
+  if (error)
+    return (
+      <p className="p-4 text-red-500">{t('common.errorLoadingProduct')}</p>
+    );
 
   return (
     <div className="p-4">
       <div className="flex flex-col">
         <h2 className="mb-4 text-center text-xl font-semibold">
-          Result for: <span className="text-blue-600">"{query}"</span>
+          {t('search.resultFor')}{' '}
+          <span className="text-blue-600">"{query}"</span>
         </h2>
 
         <div className="mb-4">
-          <label className="mb-1 block font-medium">Sort by price:</label>
+          <label className="mb-1 block font-medium">
+            {t('search.sortByPrice')}
+          </label>
           <select
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value)}
             className="rounded-lg border px-3 py-2"
           >
-            <option value="default">Default</option>
-            <option value="priceAsc">Ascending price</option>
-            <option value="priceDesc">Descending price</option>
+            <option value="default">{t('search.default')}</option>
+            <option value="priceAsc">{t('search.asc')}</option>
+            <option value="priceDesc">{t('search.desc')}</option>
           </select>
         </div>
       </div>
@@ -79,7 +87,7 @@ function SearchPage() {
           </div>
         </MotionDiv>
       ) : (
-        <p className="text-gray-500">.</p>
+        <p className="text-gray-500">{t('search.noResults')}</p>
       )}
     </div>
   );

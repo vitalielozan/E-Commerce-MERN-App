@@ -1,19 +1,29 @@
-import React, { useState } from "react";
+import React from 'react';
 import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
-  Button,
-} from "@heroui/react";
+  Button
+} from '@heroui/react';
+import { useTranslation } from 'react-i18next';
 
-function LanguageSwitcher({ className = "" }) {
-  const [language, setLanguage] = useState("English");
+function LanguageSwitcher({ className = '' }) {
+  const { i18n, t } = useTranslation();
+  const language = ['en', 'de', 'ro'].includes(i18n.language)
+    ? i18n.language
+    : 'en';
+
+  const languageLabelMap = {
+    en: 'English',
+    de: 'Deutsch',
+    ro: 'Română'
+  };
 
   const handleLanguageChange = (selected) => {
     if (selected instanceof Set) {
       const selectedLang = Array.from(selected)[0];
-      setLanguage(String(selectedLang));
+      i18n.changeLanguage(String(selectedLang));
     }
   };
 
@@ -21,20 +31,20 @@ function LanguageSwitcher({ className = "" }) {
     <Dropdown backdrop="blur">
       <DropdownTrigger>
         <Button className={`capitalize ${className}`} variant="bordered">
-          {language}
+          {languageLabelMap[language]}
         </Button>
       </DropdownTrigger>
       <DropdownMenu
         disallowEmptySelection
-        aria-label="Language selector"
-        selectedKeys={language}
+        aria-label={t('nav.language')}
+        selectedKeys={new Set([language])}
         selectionMode="single"
-        className="!bg-transparent"
+        className="bg-transparent!"
         onSelectionChange={handleLanguageChange}
       >
-        <DropdownItem key="English">English</DropdownItem>
-        <DropdownItem key="Deutsch">Deutsch</DropdownItem>
-        <DropdownItem key="Română">Română</DropdownItem>
+        <DropdownItem key="en">English</DropdownItem>
+        <DropdownItem key="de">Deutsch</DropdownItem>
+        <DropdownItem key="ro">Română</DropdownItem>
       </DropdownMenu>
     </Dropdown>
   );

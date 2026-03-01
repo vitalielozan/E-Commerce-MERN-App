@@ -5,8 +5,10 @@ import { toast } from 'react-toastify';
 import { useAuthContext } from '../hooks/useAuthContext.js';
 import axiosInstance from '../services/axiosInstance.js';
 import { API_PATHS } from '../services/apiPaths.js';
+import { useTranslation } from 'react-i18next';
 
 function CartFavProvider({ children }) {
+  const { t } = useTranslation();
   const { user } = useAuthContext();
   const [carts, setCarts] = useState([]);
   const [favorites, setFavorites] = useState([]);
@@ -43,37 +45,37 @@ function CartFavProvider({ children }) {
 
   const addToCart = async (product) => {
     if (!user) {
-      toast.warning('Log in to add this item to your cart.');
+      toast.warning(t('notifications.loginForCart'));
       return;
     }
     if (!product || !product._id) {
-      toast.error('Invalid product.');
+      toast.error(t('notifications.invalidProduct'));
       return;
     }
     if (carts.some((item) => item._id === product._id)) {
-      toast.warning('Product already in cart!');
+      toast.warning(t('notifications.productInCart'));
       return;
     }
     try {
       await axiosInstance.post(API_PATHS.CART.ADD_TO_CART, {
         productId: product._id
       });
-      toast.success('Added to cart!');
+      toast.success(t('notifications.addedToCart'));
       fetchCardProducts();
     } catch (error) {
       console.error('Error adding to card:', error.message);
-      toast.error('Failed to add to cart.');
+      toast.error(t('notifications.failedAddToCart'));
     }
   };
 
   const removeFromCart = async (productId) => {
     try {
       await axiosInstance.delete(API_PATHS.CART.DELETE_FROM_CART(productId));
-      toast.success('Removed from cart!');
+      toast.success(t('notifications.removedFromCart'));
       fetchCardProducts();
     } catch (error) {
       console.error('Error removing from card:', error.message);
-      toast.error('Failed to remove from cart.');
+      toast.error(t('notifications.failedRemoveFromCart'));
     }
   };
   const removeFromCartByProductId = async (productId) => {
@@ -89,27 +91,27 @@ function CartFavProvider({ children }) {
 
   const addToFavorites = async (product) => {
     if (!user) {
-      toast.warning('Log in to add this item to your cart.');
+      toast.warning(t('notifications.loginForCart'));
       return;
     }
 
     if (!product || !product._id) {
-      toast.error('Invalid product.');
+      toast.error(t('notifications.invalidProduct'));
       return;
     }
     if (favorites.some((item) => item.id === product._id)) {
-      toast.warning('Product already in favorites!');
+      toast.warning(t('notifications.productInFavorites'));
       return;
     }
     try {
       await axiosInstance.post(API_PATHS.FAVORITE.ADD_TO_FAVORITE, {
         productId: product._id
       });
-      toast.success('Added to favorites!');
+      toast.success(t('notifications.addedToFavorites'));
       fetchFavProducts();
     } catch (error) {
       console.error('Error adding to favorite:', error.message);
-      toast.error('Failed to add to favorite.');
+      toast.error(t('notifications.failedAddToFavorite'));
     }
   };
 
@@ -118,10 +120,10 @@ function CartFavProvider({ children }) {
       await axiosInstance.post(API_PATHS.FAVORITE.ADD_TO_CART_FROM_FAV, {
         productId
       });
-      toast.success('Added to cart from favorite!');
+      toast.success(t('notifications.addedToCartFromFavorite'));
       fetchCardProducts();
     } catch (error) {
-      toast.error('Failed to add from favorite.');
+      toast.error(t('notifications.failedAddFromFavorite'));
       console.error('Add from fav to cart error', error.message);
     }
   };
@@ -131,11 +133,11 @@ function CartFavProvider({ children }) {
       await axiosInstance.delete(
         API_PATHS.FAVORITE.DELETE_FROM_FAVORITE(productId)
       );
-      toast.success('Removed from favorite!');
+      toast.success(t('notifications.removedFromFavorite'));
       fetchFavProducts();
     } catch (error) {
       console.error('Error removing from favorite:', error.message);
-      toast.error('Failed to remove from favorite.');
+      toast.error(t('notifications.failedRemoveFromFavorite'));
     }
   };
 
@@ -156,10 +158,10 @@ function CartFavProvider({ children }) {
     try {
       await axiosInstance.delete(API_PATHS.CART.CLEAR_CART);
       setCarts([]);
-      toast.success('Cart cleared.');
+      toast.success(t('notifications.cartCleared'));
     } catch (error) {
       console.error('Error clearing cart:', error.message);
-      toast.error('Failed to clear cart.');
+      toast.error(t('notifications.failedClearCart'));
     }
   };
 

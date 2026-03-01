@@ -6,6 +6,7 @@ import { validateEmail, validatePassword } from '../services/helper.js';
 import axiosInstance from '../services/axiosInstance.js';
 import { API_PATHS } from '../services/apiPaths.js';
 import AuthLayout from '../layout/AuthLayout.jsx';
+import { useTranslation } from 'react-i18next';
 
 function SignupPage() {
   const navigate = useNavigate();
@@ -15,25 +16,24 @@ function SignupPage() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(null);
   const { updateUser } = useAuthContext();
+  const { t } = useTranslation();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     if (!fullName) {
-      setError('Please enter your name.');
+      setError(t('auth.errors.enterName'));
       return;
     }
     if (!validateEmail(email)) {
-      setError('Please enter a vald email adress.');
+      setError(t('auth.errors.invalidEmail'));
       return;
     }
     if (!validatePassword(password)) {
-      setError(
-        'Password must be at least 8 characters, include uppercase, number, and special character.'
-      );
+      setError(t('auth.errors.invalidPassword'));
       return;
     }
     if (password !== confirmPassword) {
-      setError('Passwords do not match.');
+      setError(t('auth.errors.passwordMismatch'));
       return;
     }
     setError(null);
@@ -59,7 +59,7 @@ function SignupPage() {
       if (error.response && error.response.data.message) {
         setError(error.response.data.message);
       } else {
-        setError('Something went wrong. Please try again');
+        setError(t('auth.errors.generic'));
       }
     }
   };
@@ -68,24 +68,24 @@ function SignupPage() {
     <AuthLayout>
       <div className="mt-10 flex h-auto flex-col justify-center md:mt-0 md:h-full lg:w-full">
         <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-          Create an Account
+          {t('auth.createAccount')}
         </h3>
         <p className="mt-[5px] mb-6 text-xs text-gray-700 dark:text-gray-400">
-          Join us today entring your details below
+          {t('auth.signupSubtitle')}
         </p>
         <form onSubmit={handleSignUp}>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <CustomInput
               value={fullName}
               onChange={({ target }) => setFullName(target.value)}
-              label="Full Name"
-              placeholder="Your Name"
+              label={t('auth.fullName')}
+              placeholder={t('auth.yourName')}
               type="text"
             />
             <CustomInput
               value={email}
               onChange={({ target }) => setEmail(target.value)}
-              label="Email Adress"
+              label={t('auth.emailAddress')}
               placeholder="john@example.com"
               type="text"
             />
@@ -93,8 +93,8 @@ function SignupPage() {
               <CustomInput
                 value={password}
                 onChange={({ target }) => setPassword(target.value)}
-                label="Password"
-                placeholder="Password"
+                label={t('auth.password')}
+                placeholder={t('auth.password')}
                 type="password"
               />
             </div>
@@ -102,8 +102,8 @@ function SignupPage() {
               <CustomInput
                 value={confirmPassword}
                 onChange={({ target }) => setConfirmPassword(target.value)}
-                label="Confirm your Passwort"
-                placeholder="Confirm password"
+                label={t('auth.confirmPassword')}
+                placeholder={t('auth.confirmPassword')}
                 type="password"
                 autoComplete="off"
               />
@@ -116,12 +116,12 @@ function SignupPage() {
             className="btn"
             onClick={() => navigate('/login')}
           >
-            SIGN UP
+            {t('auth.signUpButton')}
           </button>
           <p className="mt-3 text-[13px] text-gray-700 dark:text-gray-400">
-            Already have an account?
+            {t('auth.alreadyHaveAccount')}{' '}
             <Link className="font-medium text-blue-600 underline" to="/login">
-              Login
+              {t('auth.loginLink')}
             </Link>
           </p>
         </form>

@@ -1,4 +1,153 @@
 {
-  "welcome": "Welcome",
-  "logout": "Log out"
+  "common": {
+    "loading": "Loading...",
+    "errorLoadingProduct": "Error loading product.",
+    "continueShopping": "Continue Shopping",
+    "anonymous": "Anonymous",
+    "currency": "$",
+    "theme": {
+      "light": "Light",
+      "dark": "Dark"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "favorites": "Favorites",
+    "cart": "Cart",
+    "login": "LogIn",
+    "logout": "LogOut",
+    "searchPlaceholder": "Search...",
+    "searchGo": "Go",
+    "language": "Language"
+  },
+  "hero": {
+    "title": "Discover Top Brands & Exclusive Deals",
+    "subtitle": "Shop smarter with curated collections from premium brands all in one place."
+  },
+  "home": {
+    "featuredBrands": "Featured Brands",
+    "viewAllBrands": "View all Brands",
+    "productsLoading": "Products loading..."
+  },
+  "brands": {
+    "allBrands": "All Brands",
+    "viewAll": "View All",
+    "prev": "Prev",
+    "next": "Next",
+    "noProductsForBrand": "No products found for {{brandName}}.",
+    "descriptions": {
+      "SAMSUNG": "Samsung, modern innovative electronics for smart living",
+      "JVC": "Reliable sound and video solutions with JVC",
+      "PANASONIC": "Panasonic brings advanced tech for everyday use",
+      "LG": "Smart appliances for modern homes with LG",
+      "SHARP": "High-performance screens and electronics with Sharp",
+      "HISENSE": "Affordable quality with modern features",
+      "default": "{{brandName}} brand products"
+    }
+  },
+  "product": {
+    "viewDetails": "View Details",
+    "notFound": "Product not found.",
+    "addToCart": "Add to cart",
+    "addToFavorites": "Add to favorites"
+  },
+  "reviews": {
+    "title": "Reviews",
+    "writeComment": "Write a comment...",
+    "stars": "{{count}} stars",
+    "send": "Send Review",
+    "mustLogin": "You must be logged in to write a review.",
+    "loading": "Loading reviews...",
+    "empty": "There are no reviews for this product."
+  },
+  "auth": {
+    "welcomeBack": "Welcome Back",
+    "loginSubtitle": "Please enter your details to log in.",
+    "emailAddress": "Email Address",
+    "password": "Password",
+    "minChars": "Min 8 Characters",
+    "login": "LOGIN",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign Up",
+    "createAccount": "Create an Account",
+    "signupSubtitle": "Join us today by entering your details below",
+    "fullName": "Full Name",
+    "yourName": "Your Name",
+    "confirmPassword": "Confirm your password",
+    "signUpButton": "SIGN UP",
+    "alreadyHaveAccount": "Already have an account?",
+    "loginLink": "Login",
+    "errors": {
+      "invalidEmail": "Please enter a valid email address.",
+      "enterPassword": "Please enter the password.",
+      "enterName": "Please enter your name.",
+      "invalidPassword": "Password must be at least 8 characters, include uppercase, number, and special character.",
+      "passwordMismatch": "Passwords do not match.",
+      "generic": "Something went wrong. Please try again"
+    },
+    "sideTitle": "Shop TV Online Store! Buying a new TV can be an easy experience with us."
+  },
+  "cart": {
+    "title": "Shopping cart",
+    "total": "Total:",
+    "checkout": "Proceed to checkout",
+    "empty": "There are no products in your shopping cart. Fill your shopping cart with one of our offers."
+  },
+  "favorites": {
+    "title": "Your favorite products",
+    "empty": "There are no favorite products. Choose your favorites from our offers.",
+    "alreadyInCart": "Product already in cart!"
+  },
+  "notifications": {
+    "loginForCart": "Log in to add this item to your cart.",
+    "invalidProduct": "Invalid product.",
+    "productInCart": "Product already in cart!",
+    "addedToCart": "Added to cart!",
+    "failedAddToCart": "Failed to add to cart.",
+    "removedFromCart": "Removed from cart!",
+    "failedRemoveFromCart": "Failed to remove from cart.",
+    "productInFavorites": "Product already in favorites!",
+    "addedToFavorites": "Added to favorites!",
+    "failedAddToFavorite": "Failed to add to favorite.",
+    "addedToCartFromFavorite": "Added to cart from favorite!",
+    "failedAddFromFavorite": "Failed to add from favorite.",
+    "removedFromFavorite": "Removed from favorite!",
+    "failedRemoveFromFavorite": "Failed to remove from favorite.",
+    "cartCleared": "Cart cleared.",
+    "failedClearCart": "Failed to clear cart."
+  },
+  "checkout": {
+    "title": "Checkout",
+    "success": "Payment successful! Redirecting to homepage...",
+    "orderSummary": "Order Summary",
+    "billingAddress": "Billing Address",
+    "shippingAddress": "Shipping Address",
+    "cardNumber": "Card Number",
+    "payNow": "Pay Now",
+    "processing": "Processing...",
+    "validation": {
+      "billingRequired": "Billing address is required",
+      "shippingRequired": "Shipping address is required",
+      "invalidCard": "Invalid card number",
+      "cardRequired": "Card number is required"
+    }
+  },
+  "search": {
+    "resultFor": "Result for:",
+    "sortByPrice": "Sort by price:",
+    "default": "Default",
+    "asc": "Ascending price",
+    "desc": "Descending price",
+    "noResults": "No products found."
+  },
+  "notFound": {
+    "oops": "Oops!",
+    "message": "The page you're looking for doesn't exist...",
+    "goBack": "Go Back"
+  },
+  "footer": {
+    "tagline": "Your source for premium TVs.",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved by Vitalie Lozan."
+  }
 }

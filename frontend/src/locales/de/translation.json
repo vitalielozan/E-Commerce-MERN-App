@@ -1,4 +1,153 @@
 {
-  "welcome": "Willkommen",
-  "logout": "Auslogen"
+  "common": {
+    "loading": "Wird geladen...",
+    "errorLoadingProduct": "Fehler beim Laden des Produkts.",
+    "continueShopping": "Weiter einkaufen",
+    "anonymous": "Anonym",
+    "currency": "$",
+    "theme": {
+      "light": "Hell",
+      "dark": "Dunkel"
+    }
+  },
+  "nav": {
+    "home": "Startseite",
+    "favorites": "Favoriten",
+    "cart": "Warenkorb",
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "searchPlaceholder": "Suchen...",
+    "searchGo": "Los",
+    "language": "Sprache"
+  },
+  "hero": {
+    "title": "Entdecke Top-Marken & exklusive Angebote",
+    "subtitle": "Kaufe smarter mit kuratierten Kollektionen von Premium-Marken an einem Ort."
+  },
+  "home": {
+    "featuredBrands": "Empfohlene Marken",
+    "viewAllBrands": "Alle Marken anzeigen",
+    "productsLoading": "Produkte werden geladen..."
+  },
+  "brands": {
+    "allBrands": "Alle Marken",
+    "viewAll": "Alle anzeigen",
+    "prev": "Zurück",
+    "next": "Weiter",
+    "noProductsForBrand": "Keine Produkte für {{brandName}} gefunden.",
+    "descriptions": {
+      "SAMSUNG": "Samsung, moderne innovative Elektronik für smartes Leben",
+      "JVC": "Zuverlässige Sound- und Videolösungen von JVC",
+      "PANASONIC": "Panasonic bringt fortschrittliche Technik für den Alltag",
+      "LG": "Smarte Geräte für moderne Haushalte mit LG",
+      "SHARP": "Hochleistungs-Displays und Elektronik von Sharp",
+      "HISENSE": "Erschwingliche Qualität mit modernen Funktionen",
+      "default": "Produkte der Marke {{brandName}}"
+    }
+  },
+  "product": {
+    "viewDetails": "Details ansehen",
+    "notFound": "Produkt nicht gefunden.",
+    "addToCart": "In den Warenkorb",
+    "addToFavorites": "Zu Favoriten hinzufügen"
+  },
+  "reviews": {
+    "title": "Bewertungen",
+    "writeComment": "Kommentar schreiben...",
+    "stars": "{{count}} Sterne",
+    "send": "Bewertung senden",
+    "mustLogin": "Du musst angemeldet sein, um eine Bewertung zu schreiben.",
+    "loading": "Bewertungen werden geladen...",
+    "empty": "Für dieses Produkt gibt es keine Bewertungen."
+  },
+  "auth": {
+    "welcomeBack": "Willkommen zurück",
+    "loginSubtitle": "Bitte gib deine Daten ein, um dich anzumelden.",
+    "emailAddress": "E-Mail-Adresse",
+    "password": "Passwort",
+    "minChars": "Mindestens 8 Zeichen",
+    "login": "ANMELDEN",
+    "noAccount": "Noch kein Konto?",
+    "signUp": "Registrieren",
+    "createAccount": "Konto erstellen",
+    "signupSubtitle": "Tritt uns heute bei, indem du unten deine Daten eingibst",
+    "fullName": "Vollständiger Name",
+    "yourName": "Dein Name",
+    "confirmPassword": "Passwort bestätigen",
+    "signUpButton": "REGISTRIEREN",
+    "alreadyHaveAccount": "Du hast bereits ein Konto?",
+    "loginLink": "Anmelden",
+    "errors": {
+      "invalidEmail": "Bitte gib eine gültige E-Mail-Adresse ein.",
+      "enterPassword": "Bitte gib das Passwort ein.",
+      "enterName": "Bitte gib deinen Namen ein.",
+      "invalidPassword": "Das Passwort muss mindestens 8 Zeichen lang sein und Großbuchstaben, Zahlen und Sonderzeichen enthalten.",
+      "passwordMismatch": "Passwörter stimmen nicht überein.",
+      "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut"
+    },
+    "sideTitle": "TV online kaufen! Der Kauf eines neuen Fernsehers kann mit uns ganz einfach sein."
+  },
+  "cart": {
+    "title": "Warenkorb",
+    "total": "Gesamt:",
+    "checkout": "Zur Kasse",
+    "empty": "Es befinden sich keine Produkte im Warenkorb. Fülle ihn mit einem unserer Angebote."
+  },
+  "favorites": {
+    "title": "Deine Favoritenprodukte",
+    "empty": "Es gibt keine Favoritenprodukte. Wähle deine Favoriten aus unseren Angeboten.",
+    "alreadyInCart": "Produkt ist bereits im Warenkorb!"
+  },
+  "notifications": {
+    "loginForCart": "Melde dich an, um diesen Artikel in den Warenkorb zu legen.",
+    "invalidProduct": "Ungültiges Produkt.",
+    "productInCart": "Produkt ist bereits im Warenkorb!",
+    "addedToCart": "Zum Warenkorb hinzugefügt!",
+    "failedAddToCart": "Hinzufügen zum Warenkorb fehlgeschlagen.",
+    "removedFromCart": "Aus dem Warenkorb entfernt!",
+    "failedRemoveFromCart": "Entfernen aus dem Warenkorb fehlgeschlagen.",
+    "productInFavorites": "Produkt ist bereits in den Favoriten!",
+    "addedToFavorites": "Zu Favoriten hinzugefügt!",
+    "failedAddToFavorite": "Hinzufügen zu Favoriten fehlgeschlagen.",
+    "addedToCartFromFavorite": "Aus Favoriten in den Warenkorb hinzugefügt!",
+    "failedAddFromFavorite": "Hinzufügen aus Favoriten fehlgeschlagen.",
+    "removedFromFavorite": "Aus Favoriten entfernt!",
+    "failedRemoveFromFavorite": "Entfernen aus Favoriten fehlgeschlagen.",
+    "cartCleared": "Warenkorb geleert.",
+    "failedClearCart": "Warenkorb konnte nicht geleert werden."
+  },
+  "checkout": {
+    "title": "Kasse",
+    "success": "Zahlung erfolgreich! Weiterleitung zur Startseite...",
+    "orderSummary": "Bestellübersicht",
+    "billingAddress": "Rechnungsadresse",
+    "shippingAddress": "Lieferadresse",
+    "cardNumber": "Kartennummer",
+    "payNow": "Jetzt bezahlen",
+    "processing": "Wird verarbeitet...",
+    "validation": {
+      "billingRequired": "Rechnungsadresse ist erforderlich",
+      "shippingRequired": "Lieferadresse ist erforderlich",
+      "invalidCard": "Ungültige Kartennummer",
+      "cardRequired": "Kartennummer ist erforderlich"
+    }
+  },
+  "search": {
+    "resultFor": "Ergebnis für:",
+    "sortByPrice": "Nach Preis sortieren:",
+    "default": "Standard",
+    "asc": "Preis aufsteigend",
+    "desc": "Preis absteigend",
+    "noResults": "Keine Produkte gefunden."
+  },
+  "notFound": {
+    "oops": "Oops!",
+    "message": "Die gesuchte Seite existiert nicht...",
+    "goBack": "Zurück"
+  },
+  "footer": {
+    "tagline": "Deine Quelle für Premium-Fernseher.",
+    "followUs": "Folge uns",
+    "rights": "Alle Rechte vorbehalten von Vitalie Lozan."
+  }
 }

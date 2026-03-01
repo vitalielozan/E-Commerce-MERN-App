@@ -5,22 +5,24 @@ import { IoHome, IoCart, IoHeart, IoLogIn } from 'react-icons/io5';
 import LanguageSwitcher from './LanguageSwitcher.jsx';
 import { useAuthContext } from '../hooks/useAuthContext.js';
 import LogOut from './LogOut.jsx';
+import { useTranslation } from 'react-i18next';
 
 function Footer() {
   const { user } = useAuthContext();
+  const { t } = useTranslation();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="bg-gray-100/80 px-4 py-3 dark:bg-gray-900/50">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 py-2 pb-3 text-center text-sm md:grid-cols-4 md:text-left">
+    <footer className="mt-12 border-t border-slate-200 bg-white/80 px-4 py-6 dark:border-slate-800 dark:bg-slate-950/80">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 py-2 text-center text-sm md:grid-cols-4 md:text-left">
         <div>
-          <h1 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
+          <h1 className="mb-2 text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
             TV-Maxx
           </h1>
-          <p className="text-gray-900 dark:text-gray-300">
-            Your source for premium TVs.
+          <p className="text-slate-600 dark:text-slate-300">
+            {t('footer.tagline')}
           </p>
         </div>
 
@@ -28,23 +30,23 @@ function Footer() {
           <Link
             to="/"
             onClick={scrollToTop}
-            className="text-gray-900 dark:text-gray-300"
+            className="text-slate-700 transition-colors hover:text-sky-600 dark:text-slate-300"
           >
-            <IoHome className="size-7" title="Home" />
+            <IoHome className="size-7" title={t('nav.home')} />
           </Link>
           <Link
             to="/favorites"
             onClick={scrollToTop}
-            className="text-gray-900 dark:text-gray-300"
+            className="text-slate-700 transition-colors hover:text-sky-600 dark:text-slate-300"
           >
-            <IoHeart className="size-7" title="Favorites" />
+            <IoHeart className="size-7" title={t('nav.favorites')} />
           </Link>
           <Link
             to="/cart"
             onClick={scrollToTop}
-            className="text-gray-900 dark:text-gray-300"
+            className="text-slate-700 transition-colors hover:text-sky-600 dark:text-slate-300"
           >
-            <IoCart className="size-7" title="Cart" />
+            <IoCart className="size-7" title={t('nav.cart')} />
           </Link>
           {user ? (
             <LogOut />
@@ -52,22 +54,23 @@ function Footer() {
             <Link
               to="/login"
               onClick={scrollToTop}
-              className="text-gray-900 dark:text-gray-300"
+              className="text-slate-700 transition-colors hover:text-sky-600 dark:text-slate-300"
             >
-              <IoLogIn className="size-7" title="LogIn" />
+              <IoLogIn className="size-7" title={t('nav.login')} />
             </Link>
           )}
         </div>
 
         <div className="space-y-5">
-          <p className="font-semibold text-gray-900 dark:text-gray-300">
-            Follow Us
+          <p className="font-semibold text-slate-900 dark:text-slate-300">
+            {t('footer.followUs')}
           </p>
           <div className="flex justify-center space-x-4 md:justify-start">
             <a
               href="https://www.facebook.com/"
-              target="-blank"
-              className="hover:text-blue-600"
+              target="_blank"
+              rel="noreferrer"
+              className="text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
               aria-label="Facebook"
             >
               <FaFacebook className="h-8 w-8" />
@@ -75,7 +78,8 @@ function Footer() {
             <a
               href="https://www.instagram.com/"
               target="_blank"
-              className="hover:text-pink-500"
+              rel="noreferrer"
+              className="text-slate-600 transition-colors hover:text-pink-500 dark:text-slate-300"
               aria-label="Instagram"
             >
               <FaInstagram className="h-8 w-8" />
@@ -83,7 +87,8 @@ function Footer() {
             <a
               href="https://www.tiktok.com/"
               target="_blank"
-              className="hover:text-red-800"
+              rel="noreferrer"
+              className="text-slate-600 transition-colors hover:text-red-800 dark:text-slate-300"
               aria-label="Tiktok"
             >
               <FaTiktok className="h-8 w-8" />
@@ -92,13 +97,13 @@ function Footer() {
         </div>
 
         <div className="space-y-3">
-          <LanguageSwitcher className="mx-auto w-full max-w-40 text-gray-900 md:mx-0 dark:text-white" />
+          <LanguageSwitcher className="mx-auto w-full max-w-40 text-slate-900 md:mx-0 dark:text-white" />
         </div>
       </div>
-      <hr className="mx-10 my-4 border-t border-gray-700 dark:border-gray-500" />
+      <hr className="mx-auto my-4 max-w-7xl border-t border-slate-200 dark:border-slate-800" />
 
-      <p className="py-2 text-center text-gray-600 dark:text-gray-400">
-        &copy; {new Date().getFullYear()} All rights reserved by Vitalie Lozan.
+      <p className="py-2 text-center text-slate-500 dark:text-slate-400">
+        &copy; {new Date().getFullYear()} {t('footer.rights')}
       </p>
     </footer>
   );

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import EmptyMasage from '../components/EmptyMasage.jsx';
-import { messages } from '../constants/constants.js';
 import MotionDiv from '../components/MotionDiv.jsx';
 import { Trash2 } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
@@ -15,7 +14,9 @@ import {
   Button,
   Image
 } from '@heroui/react';
+import { useTranslation } from 'react-i18next';
 function CartPage() {
+  const { t } = useTranslation();
   useUserAuth();
   const navigate = useNavigate();
   const { carts, removeFromCart } = useCartFav();
@@ -24,18 +25,15 @@ function CartPage() {
 
   useEffect(() => {
     if (!user && !isLoading) {
-      navigate('/login');
+      navigate('/login', { replace: true });
     }
   }, [navigate, user, isLoading]);
 
   return (
     <div className="p-3 text-center">
-      <h1 className="mb-6 text-4xl font-bold">Shopping cart</h1>
+      <h1 className="mb-6 text-4xl font-bold">{t('cart.title')}</h1>
       {carts.length === 0 ? (
-        <EmptyMasage
-          imageSrc="/shopping-bag.png"
-          message={messages.messageCart}
-        />
+        <EmptyMasage imageSrc="/shopping-bag.png" message={t('cart.empty')} />
       ) : (
         <MotionDiv>
           <div className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -82,14 +80,14 @@ function CartPage() {
 
           <div className="mt-8 space-y-4 text-center">
             <p className="text-xl font-semibold text-gray-700 dark:text-gray-500">
-              Total :
+              {t('cart.total')}{' '}
               <span className="text-indigo-600">${total.toFixed(2)}</span>
             </p>
             <Button
               className="rounded bg-green-600 px-6 py-2 text-lg font-medium text-white shadow hover:scale-105"
               onPress={() => navigate('/checkout')}
             >
-              Proceed to checkout
+              {t('cart.checkout')}
             </Button>
           </div>
         </MotionDiv>

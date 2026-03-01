@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import MotionDiv from '../components/MotionDiv.jsx';
 import EmptyMasage from '../components/EmptyMasage.jsx';
-import { messages } from '../constants/constants.js';
 import { ShoppingCart, Trash2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCartFav } from '../hooks/useCartFav.js';
@@ -16,8 +15,10 @@ import {
   Button,
   Image
 } from '@heroui/react';
+import { useTranslation } from 'react-i18next';
 
 function FavoritesPage() {
+  const { t } = useTranslation();
   useUserAuth();
   const navigate = useNavigate();
   const { carts, favorites, addFromFavoriteToCart, removeFromFavorites } =
@@ -25,22 +26,22 @@ function FavoritesPage() {
   const { user, isLoading } = useAuthContext();
   useEffect(() => {
     if (!user && !isLoading) {
-      navigate('/login');
+      navigate('/login', { replace: true });
     }
   }, [navigate, user, isLoading]);
 
   const handleAddToCartFromFavorite = (product) => {
     if (carts.some((item) => item.product._id === product._id)) {
-      toast.warning('Product already in cart!');
+      toast.warning(t('favorites.alreadyInCart'));
       return;
     }
     addFromFavoriteToCart(product._id);
   };
   return (
     <div className="p-3 text-center">
-      <h1 className="mb-6 text-4xl font-bold">Your favorite products</h1>
+      <h1 className="mb-6 text-4xl font-bold">{t('favorites.title')}</h1>
       {favorites.length === 0 ? (
-        <EmptyMasage imageSrc="/favorite.png" message={messages.messageFav} />
+        <EmptyMasage imageSrc="/favorite.png" message={t('favorites.empty')} />
       ) : (
         <MotionDiv>
           <div className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
