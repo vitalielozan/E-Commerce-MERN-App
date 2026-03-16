@@ -2,6 +2,7 @@
   "common": {
     "loading": "Se încarcă...",
     "errorLoadingProduct": "Eroare la încărcarea produsului.",
+    "goBack": "Înapoi",
     "continueShopping": "Continuă cumpărăturile",
     "anonymous": "Anonim",
     "currency": "$",

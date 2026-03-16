@@ -2,6 +2,7 @@
   "common": {
     "loading": "Wird geladen...",
     "errorLoadingProduct": "Fehler beim Laden des Produkts.",
+    "goBack": "Zurück",
     "continueShopping": "Weiter einkaufen",
     "anonymous": "Anonym",
     "currency": "$",

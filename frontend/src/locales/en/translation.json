@@ -2,6 +2,7 @@
   "common": {
     "loading": "Loading...",
     "errorLoadingProduct": "Error loading product.",
+    "goBack": "Go Back",
     "continueShopping": "Continue Shopping",
     "anonymous": "Anonymous",
     "currency": "$",
